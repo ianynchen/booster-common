@@ -1,7 +1,7 @@
-package org.antu.booster.commons.circuit.breaker;
+package io.github.booster.commons.circuit.breaker;
 
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
-import org.antu.booster.commons.metrics.MetricsRegistry;
+import io.github.booster.commons.metrics.MetricsRegistry;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

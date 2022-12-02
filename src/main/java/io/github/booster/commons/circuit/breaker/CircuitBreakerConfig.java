@@ -1,9 +1,9 @@
-package org.antu.booster.commons.circuit.breaker;
+package io.github.booster.commons.circuit.breaker;
 
 import arrow.core.Option;
+import io.github.booster.commons.metrics.MetricsRegistry;
+import io.github.booster.commons.pool.NamedObjectPool;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import org.antu.booster.commons.metrics.MetricsRegistry;
-import org.antu.booster.commons.pool.NamedObjectPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

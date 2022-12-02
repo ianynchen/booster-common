@@ -1,7 +1,7 @@
-package org.antu.booster.commons.retry;
+package io.github.booster.commons.circuit.breaker;
 
+import io.github.booster.commons.metrics.MetricsRegistry;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
-import org.antu.booster.commons.metrics.MetricsRegistry;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -11,58 +11,52 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class RetryConfigTest {
-
+class CircuitBreakerConfigTest {
 
     @Test
     void shouldThrowException() {
         assertThrows(
                 UnsupportedOperationException.class,
-                () -> new RetryConfig().getOption("test")
+                () -> new CircuitBreakerConfig().getOption("test")
         );
         assertThrows(
                 UnsupportedOperationException.class,
-                () -> new RetryConfig(Map.of()).getOption("test")
+                () -> new CircuitBreakerConfig(Map.of()).getOption("test")
         );
         assertThrows(
                 UnsupportedOperationException.class,
-                () -> new RetryConfig(Map.of("test", new RetrySetting())).getOption("test")
+                () -> new CircuitBreakerConfig(Map.of("test", new CircuitBreakerSetting())).getOption("test")
         );
     }
 
     @Test
     void shouldCreateConfig() {
-        assertThat(new RetryConfig(), notNullValue());
-        assertThat(new RetryConfig(Map.of()), notNullValue());
-        assertThat(new RetryConfig(Map.of("test", new RetrySetting())), notNullValue());
+        assertThat(new CircuitBreakerConfig(), notNullValue());
+        assertThat(new CircuitBreakerConfig(Map.of()), notNullValue());
+        assertThat(new CircuitBreakerConfig(Map.of("test", new CircuitBreakerSetting())), notNullValue());
     }
 
     @Test
-    void shouldNotCreateRetry() {
-        assertThat(new RetryConfig().get("test").isDefined(), equalTo(false));
-        assertThat(new RetryConfig(Map.of()).get("test").isDefined(), equalTo(false));
+    void shouldNotCreateCircuitBreaker() {
+        assertThat(new CircuitBreakerConfig().get("test").isDefined(), equalTo(false));
+        assertThat(new CircuitBreakerConfig(Map.of()).get("test").isDefined(), equalTo(false));
         assertThat(
-                new RetryConfig(Map.of("abc", new RetrySetting())).get("test").isDefined(),
+                new CircuitBreakerConfig(Map.of("abc", new CircuitBreakerSetting())).get("test").isDefined(),
                 equalTo(false)
         );
     }
 
     @Test
-    void shouldCreateRetry() {
-        RetrySetting setting = new RetrySetting();
-        setting.setMaxAttempts(1);
-
+    void shouldCreateCircuitBreaker() {
         assertThat(
-                new RetryConfig(Map.of("test", setting)).get("test").isDefined(),
+                new CircuitBreakerConfig(Map.of("test", new CircuitBreakerSetting())).get("test").isDefined(),
                 equalTo(true)
         );
     }
 
     @Test
     void shouldHandleRegistry() {
-        RetrySetting setting = new RetrySetting();
-        setting.setMaxAttempts(1);
-        RetryConfig config = new RetryConfig(Map.of("test", setting));
+        CircuitBreakerConfig config = new CircuitBreakerConfig(Map.of("test", new CircuitBreakerSetting()));
 
         config.setMetricsRegistry(null);
         assertThat(
