@@ -1,4 +1,4 @@
-package org.antu.booster.commons.metrics;
+package io.github.booster.commons.metrics;
 
 import arrow.core.Option;
 import com.google.common.base.Preconditions;

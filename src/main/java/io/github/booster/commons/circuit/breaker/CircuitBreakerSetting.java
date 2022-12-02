@@ -1,4 +1,4 @@
-package org.antu.booster.commons.circuit.breaker;
+package io.github.booster.commons.circuit.breaker;
 
 import arrow.core.Option;
 import arrow.core.OptionKt;
@@ -8,7 +8,7 @@ import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.micrometer.tagged.TaggedCircuitBreakerMetrics;
 import lombok.ToString;
-import org.antu.booster.commons.metrics.MetricsRegistry;
+import io.github.booster.commons.metrics.MetricsRegistry;
 import org.apache.commons.lang3.StringUtils;
 
 import java.time.Duration;

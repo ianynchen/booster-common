@@ -1,4 +1,4 @@
-package org.antu.booster.commons.pool;
+package io.github.booster.commons.pool;
 
 import arrow.core.Option;
 import org.slf4j.Logger;

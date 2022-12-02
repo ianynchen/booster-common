@@ -1,7 +1,7 @@
-package org.antu.booster.commons.retry;
+package io.github.booster.commons.retry;
 
+import io.github.booster.commons.metrics.MetricsRegistry;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
-import org.antu.booster.commons.metrics.MetricsRegistry;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

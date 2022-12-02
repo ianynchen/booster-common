@@ -1,4 +1,4 @@
-package org.antu.booster.commons.retry;
+package io.github.booster.commons.retry;
 
 import arrow.core.Option;
 import arrow.core.OptionKt;
@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.antu.booster.commons.metrics.MetricsRegistry;
+import io.github.booster.commons.metrics.MetricsRegistry;
 import org.apache.commons.lang3.StringUtils;
 
 import java.time.Duration;
